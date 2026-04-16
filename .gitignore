@@ -8,3 +8,32 @@ build/
 Thumbs.db
 .idea/
 .vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# SQLite / local data
+*.db
+*.sqlite
+*.sqlite3
+
+# Backend runtime
+*.pid
+*.seed
+
+# Frontend package managers
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vite / cache
+.vite/
+.cache/
+
+# Windows
+Desktop.ini
