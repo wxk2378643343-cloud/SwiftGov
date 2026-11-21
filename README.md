@@ -1,18 +1,36 @@
-# SwiftGov
+# SwiftGov 政务服务流程系统
 
-SwiftGov 是一个政务业务流程演示项目，使用 Vue 前端、FastAPI 后端和 SQLite。业务需求和角色流程集中记录在 [需求文档](docs/requirements.md)。
+![Vue 3](https://img.shields.io/badge/Vue%203-2563EB?style=flat-square)
+![Vite](https://img.shields.io/badge/Vite-0F766E?style=flat-square)
+![FastAPI](https://img.shields.io/badge/FastAPI-334155?style=flat-square)
+![SQLite](https://img.shields.io/badge/SQLite-B45309?style=flat-square)
 
-| 路径 | 内容 |
+## 📌 项目简介
+
+面向居民提交事项申请、管理端受理审批和公告管理的政务流程演示。
+
+本仓库供**网络安全学习**使用。 `vulnerable/` 是有漏洞的历史对照版本，`secure/` 是针对课程示例做过修复的版本。可以对照两套源码，理解防护措施和代码变更。
+
+## 🏗️ 系统架构
+
+- 两个版本分别包含 Vue 前端、FastAPI 后端和各自的本地数据库。
+- 前端负责用户交互，后端提供业务 API，SQLite 保存各版本的演示数据。
+
+## 📁 项目结构
+
+| 路径 | 用途 |
 | --- | --- |
-| [secure/backend](secure/backend/README.md) | 修订版 API、依赖与数据库初始化 |
-| [secure/frontend](secure/frontend/README.md) | 修订版 Web 界面、开发启动和 API 对接 |
-| `vulnerable/` | 供防御性对照审阅的历史实现 |
+| [`secure/frontend`](secure/frontend) | 修订版 Web 界面 |
+| [`secure/backend`](secure/backend) | 修订版 API 与数据库逻辑 |
+| [`vulnerable`](vulnerable) | 用于防御性对照的历史源码 |
 
-## 本地使用
+## 🚀 如何启动
 
-按修订版后端文档初始化本地数据库并启动 API，再按修订版前端文档启动界面。后端从运行目录打开 SQLite 文件，启动时应使用文档指定的工作目录。可通过 `JWT_SECRET` 和 `ALLOWED_ORIGINS` 配置修订版后端的签名密钥和允许的网页来源。
+本地演示使用修订版。先启动后端，再在各自的前端目录运行 `npm ci` 和 `npm run dev`。具体环境和后端命令见[后端说明](secure/backend/README.md)和[前端说明](secure/frontend/README.md)。后端在自己的运行目录中打开 SQLite 数据库。
 
-演示时使用独立的本地数据库和虚构业务数据。
+| 入口 | 默认地址 |
+| --- | --- |
+| API | `http://localhost:8001` |
+| Web | `http://localhost:5174` |
 
-
-后端入口为 `uvicorn app.main:app --reload --port 8001`，在 `secure/backend/` 中运行。前端在 `secure/frontend/` 中执行 `npm ci` 和 `npm run dev`，浏览器访问 Vite 输出的本地地址。
+演示数据和数据库按版本分开保存。相关资料见[需求文档](docs/requirements.md)。
